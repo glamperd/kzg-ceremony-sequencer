@@ -110,6 +110,31 @@ impl Transcript {
         Ok(())
     }
 
+    /// Verifies a historical contribution.
+    pub fn verify_inclusion<E: Engine>(&self, start: &i32) -> Result<(), CeremonyError> {
+
+        assert!(start < this.witness.products.length);
+
+        // Find contribution in witness
+
+        // Loop through subsequent witness entries. Do pairing check on each.
+        let mut index = start;
+
+        while index < this.witness.products.len() {
+            println!("{}", my_array[index]);
+            // Pairing check: this pubkey, this & prev products
+            E::verify_pubkey(
+                this.witness.products[index],
+                this.witness.products[index-1],
+                this.witness.pubkeys[index],
+            )?;
+    
+            index += 1;
+        }
+
+        Ok(())
+    }
+
     /// Adds a contribution to the transcript. The contribution must be
     /// verified.
     pub fn add(&mut self, contribution: Contribution) {
