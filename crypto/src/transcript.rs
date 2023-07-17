@@ -365,7 +365,7 @@ mod test {
     }
 
     #[test]
-    fn verify_inclusion() {
+    fn test_verify_inclusion() {
         let json = serde_json::json!({
             "numG1Powers": 4,
             "numG2Powers": 2,
