@@ -366,7 +366,6 @@ mod test {
 
     #[test]
     fn verify_inclusion() {
-        let t = Transcript::new(4, 2);
         let json = serde_json::json!({
             "numG1Powers": 4,
             "numG2Powers": 2,
