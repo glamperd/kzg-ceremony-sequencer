@@ -404,6 +404,7 @@ mod test {
             }
         });
         let t = serde_json::from_value::<Transcript>(json).unwrap();
-        assert_ok!(t.verify_inclusion(&1));
+        let result = t.verify_inclusion(&1);
+        assert_eq!(result, Ok(()));
     }
 }
